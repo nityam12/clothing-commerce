@@ -1,16 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+
+import { Provider } from "react-redux"; //component from redux which gives reducer and action
+
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-
+import store from "./redux/store.js";
 // browsersRouter is a component that needs to be wrapped in a
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );
 
