@@ -16,6 +16,9 @@
     "redux-persist": "^6.0.0",
     "reselect": "^4.0.0"
   },
+  "engines": {
+    "node": "12.8.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
