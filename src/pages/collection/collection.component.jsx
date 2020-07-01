@@ -5,11 +5,11 @@ import { selectCollection } from "../../redux/shop/shop.selector";
 
 import "./collection.styles.scss";
 
-console.log("**********************");
+
 
 const CollectionPage = ({ collection }) => {
   const { title, items } = collection;
-  console.log("4444");
+  
   return (
     <div className="collection-page">
       <h2 className="title">{title}</h2>

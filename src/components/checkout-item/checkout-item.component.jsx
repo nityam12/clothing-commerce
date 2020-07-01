@@ -4,6 +4,8 @@ import {
   removeItem,
   addItem,
 } from "../../redux/cart/cart.actions";
+
+
 import { connect } from "react-redux";
 import "./checkout-item.styles.scss";
 

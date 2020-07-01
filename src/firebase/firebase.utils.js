@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
-import { batch } from "react-redux";
+// import { batch } from "react-redux";
 const config = {
   apiKey: "AIzaSyDAgY0UMCk2Kk7d9OizhFNxtJISC50NWhs",
   authDomain: "react-commerce-db.firebaseapp.com",
@@ -38,22 +38,40 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
-export const addCollectionAndDocuments = async(collectionKey, objectsToAdd) => {
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
   const collectionRef = firestore.collection(collectionKey);
-  console.log(collectionRef);
+  // console.log(collectionRef);
 
-  const batch =firestore.batch();
+  const batch = firestore.batch();
 
-  objectsToAdd.forEach(obj=>{
-    const newDocRef=collectionRef.doc();
-    batch.set(newDocRef,obj);
-  })
-
+  objectsToAdd.forEach((obj) => {
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, obj);
+  });
 
   return await batch.commit();
+};
 
+export const convertCollectionsSnapshotToMap = (collections) => {
+  // console.log(collections);
+  const transformedCollections = collections.docs.map((doc) => {
+    const { title, items } = doc.data();
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items,
+    };
+  });
+  console.log(transformedCollections);
 
-
+  return transformedCollections.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
 };
 
 firebase.initializeApp(config);
