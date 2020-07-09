@@ -1,6 +1,6 @@
 {
   "short_name": "Manglocart",
-  "name": "Manglocart by nyk",
+  "name": "Manglocart by nityam",
   "icons": [
     {
       "src": "favicon.ico",
@@ -13,7 +13,7 @@
       "sizes": "192x192"
     },
     {
-      "src": " crwn-512x512.png",
+      "src": "crwn-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
